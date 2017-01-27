@@ -1,0 +1,52 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Layout Queue</title>
+        
+    </head>
+    <body>
+
+		<h1>Layout Queue</h1>
+
+		<p>The actions assigned to the queue will be executed in the order they have been added. By default the queue will be executed on window load and on window resize. For this page, the queue will also be executed when the maps iframe loads.</p>
+		<p>Two functions have been assigned to the queue on this page. One which waits half a second and then outputs "hello" to the textarea below. And one which immediately outputs "world" to the text area below.</p>
+		<p>You can trigger the queue by resizing the browser window (or changing the orientation of a mobile device). Note that though the "hello" function takes longer, it always executes before the "world" function.</p>
+
+		<textarea style="height: 200px;"></textarea>
+		<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d187667.68211669664!2d-114.03672458087165!3d51.037060414667884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sca!4v1485455760909" style="height: 200px;"></iframe>
+
+
+	<script src="bundle.js"></script>
+	<script>
+		function print(text) {
+			document.querySelector('textarea').value = document.querySelector('textarea').value + text;
+		}
+
+		function wait(ms) {
+		    var start = Date.now(),
+		        now = start;
+		    while (now - start < ms) {
+		      now = Date.now();
+		    }
+		}
+
+		function delayedLog(text) {
+			wait(500);
+			print(text);
+		}
+
+		LayoutQueue.add(delayedLog, ['hello\n']);
+		LayoutQueue.add(print, ['world\n']);
+		console.log(LayoutQueue.list());
+
+	    document.querySelectorAll('iframe').forEach(function(element) {
+	        element.addEventListener('load', function() {
+	            LayoutQueue.trigger();
+	        });
+	    });
+
+	</script>
+    </body>
+</html>

@@ -13,11 +13,19 @@
     "resize"
   ],
   "author": "Dave Toews (http://davejtoews.com)",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "chai": "^3.5.0",
     "jsdom": "^9.9.1",
     "jsdom-global": "^2.1.1",
     "mocha": "^3.2.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davejtoews/layout-queue.git"
+  },
+  "bugs": {
+    "url": "https://github.com/davejtoews/layout-queue/issues"
+  },
+  "homepage": "https://github.com/davejtoews/layout-queue#readme"
 }

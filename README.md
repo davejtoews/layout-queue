@@ -4,7 +4,17 @@ This library was created to eliminate race conditions when multiple JavaScript a
 
 ##  Installation
 
-Install via npm, or copy bundle.js to your project.
+Install via npm (or yarn), or copy bundle.js to your project and include via a script tag.
+
+    npm install layout-queue
+
+OR
+
+	yarn add layout-queue
+
+OR
+
+	<script src="path/to/file/bundle.js">
 
 ## Use
 

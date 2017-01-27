@@ -1,6 +1,6 @@
 {
   "name": "layout-queue",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A queue for javascript actions that affect layout, which need to execute on browser window resize and need to execute in a specific order.",
   "main": "src/LayoutQueue.js",
   "scripts": {

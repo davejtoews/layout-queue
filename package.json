@@ -4,7 +4,8 @@
   "description": "A queue for javascript actions that affect layout, which need to execute on browser window resize and need to execute in a specific order.",
   "main": "src/LayoutQueue.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "build": "webpack"
   },
   "keywords": [
     "layout",
@@ -27,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/davejtoews/layout-queue/issues"
   },
-  "homepage": "https://github.com/davejtoews/layout-queue#readme"
+  "homepage": "https://github.com/davejtoews/layout-queue#readme",
+  "dependencies": {
+    "webpack": "^3.5.5"
+  }
 }

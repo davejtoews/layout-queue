@@ -5,6 +5,16 @@ var LayoutQueue = require('../src/LayoutQueue.js');
 describe('LayoutQueue', function() {
 	var i = 0;
 	var counter = function() { i++; }
+	var readyState = "loading";
+
+	var loadDocument = function() {
+		window.dispatchEvent(new Event('load'));
+		readyState = "complete";
+	} 
+
+	Object.defineProperty(document, "readyState", {
+	  	get() { return readyState; }
+	});
 
 	it('should start with empty queue', function() {
 	    assert.equal(LayoutQueue.list().length, 0);		
@@ -21,7 +31,7 @@ describe('LayoutQueue', function() {
 	});
 	it('should process queue on load', function() {
 		LayoutQueue.add(counter, []);
-		window.dispatchEvent(new Event('load'));
+		loadDocument();
 		assert.equal(i, 1);
 	});
 	it('should process queue on resize', function() {

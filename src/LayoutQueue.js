@@ -9,12 +9,12 @@ var LayoutQueue = (function () {
         });
     }
 
-    window.addEventListener('load', function(){
-        processQueue();
-    });
+    function handleLoad() {
+        return processQueue();
+    }
 
     window.addEventListener('resize', function() {
-        processQueue();
+        processQueue('resize');
     });  
 
     return {
@@ -23,6 +23,12 @@ var LayoutQueue = (function () {
                 action: action,
                 args: args
             });
+            if(document.readyState === "complete") {
+                processQueue();
+            } else {
+                window.removeEventListener('load', handleLoad);
+                window.addEventListener('load', handleLoad);
+            }
         },
         trigger: function () {
             processQueue();
